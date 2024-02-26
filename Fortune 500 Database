@@ -1,3 +1,6 @@
+  #This project utilizes the following Fortune 500 data: 
+
+
 CREATE TABLE fortune_companies (
     company_id INTEGER PRIMARY KEY,
     company_name TEXT,
