@@ -71,6 +71,17 @@ GROUP BY company
 HAVING avg_rev_billions > 200
 ORDER BY avg_rev_billions DESC; 
 
+
+# Show companies’ quality of maternity leave by number of days: 
+
+SELECT company_name AS company
+,CASE WHEN maternity_leave_weeks >= 10 THEN "Excellent"
+WHEN maternity_leave_weeks >=  8 THEN "Good"
+ELSE "Fair" 
+END AS quality_of_maternity_leave
+FROM fortune_companies; 
+
+
 # Show all companies with healthcare benefits and at least two weeks paid time off: 
 
 SELECT company_name AS company 
@@ -78,10 +89,35 @@ FROM fortune_companies
 WHERE healthcare_benefits = TRUE
 AND paid_time_off_days >= 14; 
 
+# Show companies with less than 100,000 employees in the Technology or Retail Industry: 
 
-# Show maximum and minimum number of employees across all fortune_500 companies: 
+SELECT company_name AS company
+,industry 
+,SUM(employees) AS employees
+FROM fortune_companies
+WHERE industry = "Technology" OR industry = "Retail"
+GROUP BY company
+HAVING employees <= 100000; 
 
-SELECT MAX(employees) AS max_employees
-,MIN(employees) AS min_employees
-FROM fortune_companies;
+
+# Show which company has the maximum revenue in the Technology industry: 
+
+SELECT company_name
+,MAX(revenue)
+FROM fortune_companies
+WHERE industry = "Technology"; 
+
+
+# Show the industries with a summary of the average tenure: 
+
+SELECT industry
+,CASE WHEN avg_employee_tenure >= 5 THEN "5 years or more"
+WHEN avg_employee_tenure < 5 THEN "Less than 5 years"
+WHEN avg_employee_tenure >= 10 THEN "10 years or more"
+ELSE "Other"
+END AS Tenure 
+FROM fortune_companies; 
+
+
+
 
