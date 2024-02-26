@@ -71,3 +71,13 @@ GROUP BY company
 HAVING avg_rev_billions > 200
 ORDER BY avg_rev_billions DESC; 
 
+
+
+
+
+# Show maximum and minimum number of employees across all fortune_500 companies: 
+
+SELECT MAX(employees) AS max_employees
+,MIN(employees) AS min_employees
+FROM fortune_companies;
+
