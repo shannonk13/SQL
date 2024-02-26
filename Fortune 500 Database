@@ -62,7 +62,7 @@ VALUES
 
 # Analysis: 
 
-# Companies with an average revenue greater than $200 Billion in descending order: 
+# Show companies with an average revenue greater than $200 Billion in descending order (revenue):  
 
 SELECT company_name AS company 
 ,ROUND(AVG(revenue),2) AS avg_rev_billions
