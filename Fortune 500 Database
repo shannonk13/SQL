@@ -62,4 +62,12 @@ VALUES
 
 # Analysis: 
 
+# Companies with an average revenue greater than $200 Billion in descending order: 
+
+SELECT company_name AS company 
+,ROUND(AVG(revenue),2) AS avg_rev_billions
+FROM fortune_companies
+GROUP BY company
+HAVING avg_rev_billions > 200
+ORDER BY avg_rev_billions DESC; 
 
