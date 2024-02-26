@@ -71,8 +71,12 @@ GROUP BY company
 HAVING avg_rev_billions > 200
 ORDER BY avg_rev_billions DESC; 
 
+# Show all companies with healthcare benefits and at least two weeks paid time off: 
 
-
+SELECT company_name AS company 
+FROM fortune_companies
+WHERE healthcare_benefits = TRUE
+AND paid_time_off_days >= 14; 
 
 
 # Show maximum and minimum number of employees across all fortune_500 companies: 
