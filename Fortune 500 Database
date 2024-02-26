@@ -108,9 +108,10 @@ FROM fortune_companies
 WHERE industry = "Technology"; 
 
 
-# Show the industries with a summary of the average tenure: 
+# Show the companies and their relative industries with a summary of the average tenure: 
 
-SELECT industry
+SELECT company_name
+,industry
 ,CASE WHEN avg_employee_tenure >= 5 THEN "5 years or more"
 WHEN avg_employee_tenure < 5 THEN "Less than 5 years"
 WHEN avg_employee_tenure >= 10 THEN "10 years or more"
